@@ -79,6 +79,7 @@ if $SCRIPTPATH/src/ros2cs/build_android.sh -p ${ANDROID_NDK}; then
     cp $SCRIPTPATH/src/Ros2ForUnity/metadata_ros2cs.xml $SCRIPTPATH/install/asset/Ros2ForUnity/Plugins/Android/metadata_ros2cs.xml
     cp $SCRIPTPATH/src/Ros2ForUnity/metadata_ros2cs.xml $SCRIPTPATH/install/asset/Ros2ForUnity/Plugins/metadata_ros2cs.xml
 
+    mkdir -p $SCRIPTPATH/install/asset/Ros2ForUnity/Resources/
     cp $SCRIPTPATH/src/Ros2ForUnity/metadata_ros2cs.xml $SCRIPTPATH/install/asset/Ros2ForUnity/Resources/metadata_ros2cs.xml
     cp $SCRIPTPATH/src/Ros2ForUnity/metadata_ros2_for_unity.xml $SCRIPTPATH/install/asset/Ros2ForUnity/Resources/metadata_ros2_for_unity.xml
 else

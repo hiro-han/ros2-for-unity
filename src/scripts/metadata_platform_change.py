@@ -1,7 +1,6 @@
 import os
 import sys
 
-print(sys.argv)
 if len(sys.argv) < 2:
     sys.exit()
 

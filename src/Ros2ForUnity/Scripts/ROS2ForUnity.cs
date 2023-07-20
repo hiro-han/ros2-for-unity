@@ -276,10 +276,8 @@ internal class ROS2ForUnity
         {
 #if UNITY_ANDROID
             TextAsset xmlAsset = (TextAsset)Resources.Load("metadata_ros2cs");
-            Debug.Log(xmlAsset.text);
             ros2csMetadata.LoadXml(xmlAsset.text);
             xmlAsset = (TextAsset)Resources.Load("metadata_ros2_for_unity");
-            Debug.Log(xmlAsset.text);
             ros2ForUnityMetadata.LoadXml(xmlAsset.text);
 #else
             ros2csMetadata.Load(GetPluginPath() + separator + "metadata_ros2cs.xml");
