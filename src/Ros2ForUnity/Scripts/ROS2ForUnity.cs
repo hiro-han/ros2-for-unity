@@ -35,7 +35,8 @@ internal class ROS2ForUnity
     public enum Platform
     {
         Windows,
-        Linux
+        Linux,
+        Android
     }
     
     public static Platform GetOS()
@@ -47,6 +48,10 @@ internal class ROS2ForUnity
         else if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
         {
             return Platform.Windows;
+        }
+        else if (Application.platform == RuntimePlatform.Android)
+        {
+            return Platform.Android;
         }
         throw new System.NotSupportedException("Only Linux and Windows are supported");
     }
@@ -63,8 +68,10 @@ internal class ROS2ForUnity
                 return "Linux";
             case Platform.Windows:
                 return "Windows";
+            case Platform.Android:
+                return "Android";
             default:
-                throw new System.NotSupportedException("Only Linux and Windows are supported");
+                throw new System.NotSupportedException("Only Linux, Android and Windows  are supported");
         }
     }
     
@@ -176,7 +183,7 @@ internal class ROS2ForUnity
                 "This is caused by mixing versions/builds. Plugin might not work correctly."
             );
         }
-
+#if !UNITY_ANDROID
         if(!IsStandalone() && ros2SourcedCodename != ros2FromRos2csMetadata) {
             Debug.LogError(
                 "ROS2 version in 'ros2cs' metadata doesn't match currently sourced version. " +
@@ -190,6 +197,7 @@ internal class ROS2ForUnity
                 "Plugin might not work correctly."
             );
         }
+#endif
     }
 
     public string GetROSVersionSourced()
@@ -266,8 +274,17 @@ internal class ROS2ForUnity
         char separator = Path.DirectorySeparatorChar;
         try
         {
+#if UNITY_ANDROID
+            TextAsset xmlAsset = (TextAsset)Resources.Load("metadata_ros2cs");
+            Debug.Log(xmlAsset.text);
+            ros2csMetadata.LoadXml(xmlAsset.text);
+            xmlAsset = (TextAsset)Resources.Load("metadata_ros2_for_unity");
+            Debug.Log(xmlAsset.text);
+            ros2ForUnityMetadata.LoadXml(xmlAsset.text);
+#else
             ros2csMetadata.Load(GetPluginPath() + separator + "metadata_ros2cs.xml");
             ros2ForUnityMetadata.Load(GetRos2ForUnityPath() + separator + "metadata_ros2_for_unity.xml");
+#endif
         }
         catch (System.IO.FileNotFoundException)
         {

@@ -34,6 +34,7 @@ internal class PostInstall : IPostprocessBuildWithReport
     public int callbackOrder { get { return 0; } }
     public void OnPostprocessBuild(BuildReport report)
     {
+#if !UNITY_ANDROID
         var r2fuMetadataName = "metadata_ros2_for_unity.xml";
         var r2csMetadataName = "metadata_ros2cs.xml";
 
@@ -61,6 +62,7 @@ internal class PostInstall : IPostprocessBuildWithReport
             FileUtil.CopyFileOrDirectory(
                 r2csMeta, outputDir + "/" + execFilename + "_Data/Plugins/x86_64/" + r2csMetadataName);
         }
+#endif
     }
 
 }

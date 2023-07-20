@@ -13,8 +13,8 @@ fi
 
 pluginDir=$1
 
-mkdir -p  ${pluginDir}/Linux/x86_64/
+mkdir -p  ${pluginDir}/Android/
 find install/lib/dotnet/ -maxdepth 1 -not -name "*.pdb" -type f -exec cp {} ${pluginDir} \;
-cp $SCRIPTPATH/install/standalone/* ${pluginDir}/Linux/x86_64/ 2>/dev/null
-find install/lib/ -maxdepth 1 -not -name "*_python.so" -type f -exec cp {} ${pluginDir}/Linux/x86_64/ \;
-cp $SCRIPTPATH/install/resources/*.so ${pluginDir}/Linux/x86_64/ 2>/dev/null
+cp $SCRIPTPATH/install/standalone/* ${pluginDir}/Android/ 2>/dev/null
+find install/lib/ -maxdepth 1 -not -name "*_python.so" -type f -exec cp {} ${pluginDir}/Android/ \;
+cp $SCRIPTPATH/install/resources/*.so ${pluginDir}/Android/ 2>/dev/null

@@ -22,4 +22,5 @@ echo "========================================="
 echo "Pulling ros2cs dependencies:"
 cd "$SCRIPTPATH/src/ros2cs"
 ./get_repos.sh
+source android_patch.sh
 cd -

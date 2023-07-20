@@ -101,6 +101,12 @@ fi
 echo "Copying asset to export..."
 cp -r "$INPUT_ASSET" "$TMP_PROJECT_PATH/Assets/$PACKAGE_NAME"
 
+# Open project & change meta files
+echo "Change Android meta platform (ARMv7 to ARM64)"
+$UNITY_PATH -projectPath "$TMP_PROJECT_PATH" -batchmode -quit
+python3 ${SCRIPTPATH}/src/scripts/metadata_platform_change.py $TMP_PROJECT_PATH/Assets/Ros2ForUnity/Plugins/Android
+cp -r $TMP_PROJECT_PATH/Assets/* $OUTPUT_DIR
+
 # Creating asset
 echo "Saving unitypackage '$OUTPUT_DIR/$PACKAGE_NAME.unitypackage'..."
 mkdir -p $OUTPUT_DIR
