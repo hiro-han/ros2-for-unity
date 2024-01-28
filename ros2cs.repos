@@ -1,4 +1,5 @@
 repositories:
   src/ros2cs/:
     type: git
-    url:     https://github.com/Kotakku/ros2cs.git
+    url: git@github.com:hiro-han/ros2cs.git
+    version: feature/unity-2023

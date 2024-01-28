@@ -86,7 +86,8 @@ fi
 
 echo "Using \"${UNITY_PATH}\" editor."
 
-TMP_PROJECT_PATH=/tmp/ros2cs_unity_project/$UNITY_VERSION
+#TMP_PROJECT_PATH=/tmp/ros2cs_unity_project/$UNITY_VERSION
+TMP_PROJECT_PATH=$HOME/tmp/ros2cs_unity_project/$UNITY_VERSION
 # Create temp project
 if [ -d "$TMP_PROJECT_PATH" ]; then
     echo "Found existing temporary project for Unity $UNITY_VERSION."
